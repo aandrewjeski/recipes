@@ -4,7 +4,7 @@ require 'pry'
 
 def db_connection
   begin
-    connection = PG.connect(dbname: 'movies')
+    connection = PG.connect(dbname: 'recipes')
 
     yield(connection)
 
@@ -19,17 +19,17 @@ end
 get "/recipes" do
   @recipes = nil
   db_connection do |conn|
-    @recipes = conn.exec('SELECT * FROM recipes ORDER BY name LIMIT 20;')
+    @recipes = conn.exec('SELECT * FROM recipes ORDER BY name;')
   end
   @recipes = @recipes.to_a
   erb :recipes
 end
 
 get "/recipes/:id" do
-
+	@recipe_info = nil
   db_connection do |conn|
-    @recipe_info = conn.exec_params('SELECT * FROM recipes ORDER BY name WHERE recipes.id = #{params[:id]} LIMIT 20;')
+    @recipe_info = conn.exec_params("SELECT * FROM recipes WHERE id = #{params[:id]};")
   end
-  @actor_info = @recipe_info.to_a
-  erb :actor_info
+  @recipe_info = @recipe_info.to_a
+  erb :recipe_info
 end
