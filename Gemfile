@@ -1,0 +1,1 @@
+gem 'sinatra-paginate', '~> 0.1.0'
