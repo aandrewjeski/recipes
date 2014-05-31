@@ -28,8 +28,8 @@ end
 get "/recipes/:id" do
 
   db_connection do |conn|
-    @actor_info = conn.exec_params('SELECT * FROM recipes ORDER BY name WHERE actors.id = #{params[:id]} LIMIT 20;')
+    @recipe_info = conn.exec_params('SELECT * FROM recipes ORDER BY name WHERE recipes.id = #{params[:id]} LIMIT 20;')
   end
-  @actor_info = @actor_info.to_a
+  @actor_info = @recipe_info.to_a
   erb :actor_info
 end
