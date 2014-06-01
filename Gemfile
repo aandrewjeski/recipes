@@ -1,1 +1,1 @@
-gem 'sinatra-paginate', '~> 0.1.0'
+gem 'will_paginate', '~> 3.0.5'

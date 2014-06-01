@@ -1,6 +1,9 @@
 require 'sinatra'
 require 'pg'
 require 'pry'
+require 'will_paginate'
+require 'will_paginate/array'
+require 'will_paginate/active_record'
 
 def db_connection
   begin
@@ -14,6 +17,7 @@ def db_connection
 end
 
 get "/" do
+	redirect '/recipes'
 end
 
 get "/recipes" do
@@ -22,6 +26,7 @@ get "/recipes" do
     @recipes = conn.exec('SELECT * FROM recipes ORDER BY name;')
   end
   @recipes = @recipes.to_a
+  @recipes = @recipes.paginate(:page => params[:page], :per_page => 20)
   erb :recipes
 end
 
