@@ -28,7 +28,12 @@ end
 get "/recipes/:id" do
 	@recipe_info = nil
   db_connection do |conn|
-    @recipe_info = conn.exec_params("SELECT * FROM recipes WHERE id = #{params[:id]};")
+    @recipe_info = conn.exec_params("SELECT recipes.name AS name,
+    	recipes.instructions AS instructions, recipes.description AS description, 
+    	ingredients.name AS ingredients
+    	FROM recipes
+    	JOIN ingredients ON recipes.id = ingredients.recipe_id
+    	WHERE recipes.id = #{params[:id]};")
   end
   @recipe_info = @recipe_info.to_a
   erb :recipe_info

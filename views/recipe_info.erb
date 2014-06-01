@@ -1,13 +1,14 @@
 <head>
-    <title><%= params['name'] %></title>
+    <title>Recipe: <%= "#{@recipe_info[0]['name']}" %></title>
 </head>
 <body>
-<h1><%= params['name'] %></h1>
-<% @recipe_info.each do |recipe| %>
-  <ul>
-    <a href="/recipes/<%= "#{recipe['id']}" %>"><%= "#{recipe['name']}" %></a>
-  </br>
-    <%= "#{recipe['description']}" %>
-  </ul>
-<% end %>
+<h1>Recipe: <%= "#{@recipe_info[0]['name']}" %></h1>
+	<strong><p>Description: </p></strong>
+		<%= @recipe_info[0]['description'] %>
+	</br>
+	<strong><p>Ingredients: </p></strong>
+		<%= @recipe_info[0]['ingredients'] %>
+	</br>
+	<strong><p>Instructions: </p></strong>
+		<%= @recipe_info[0]['instructions'] %>
 </body>
