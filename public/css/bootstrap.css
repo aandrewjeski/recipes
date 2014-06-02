@@ -6165,3 +6165,12 @@ a.badge:focus {
 .affix {
   position: fixed;
 }
+
+.jumbotron {
+    margin-bottom: 400px;
+    background-position: 0% 25%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: orange;
+    text-shadow: black 0.3em 0.3em 0.3em;
+}

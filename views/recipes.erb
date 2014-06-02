@@ -2,15 +2,18 @@
     <title>Recipe Book</title>
   </head>
 <body>
-<h1> Recipe Book </h1>
-<p>
-<ul>
-  <% @recipes.each do |recipe| %>
-    <li><a href="/recipes/<%= "#{recipe['id']}" %>"><%= "#{recipe['name']}" %></a>
-    </li>
-  <% end %>
-</ul>
-</p>
-</body>
-
-<%= will_paginate @recipes %>
+<center>
+<h2> Recipe Book </h2>
+<div class="container">
+	<div class="jumbotron">
+		<ul>
+		  <% @recipes.each do |recipe| %>
+		    <a href="/recipes/<%= "#{recipe['id']}" %>"><%= "#{recipe['name']}" %></a>
+		  </br>
+		  <% end %>
+		</ul>
+		</body>
+		<%= will_paginate @recipes %>
+</center>
+	</div>
+</div>
